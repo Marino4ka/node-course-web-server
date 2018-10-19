@@ -3,7 +3,7 @@ const hbs = require("hbs");
 const fs = require("fs");
 
 
-var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + "/views/partials");
@@ -63,12 +63,24 @@ app.get("/about", (req, res) => {
 	});
 });
 
+app.get("/projects", (req, res) => {
+	res.render("projects.hbs", {
+		pageTitle: "Portfolio Page"
+	});
+});
+
 app.get("/bad", (req, res) => {
 	res.send({
 		errorMessage: "Unable to handle request"
 	});
 });
 
-app.listen(port, () => {
-	console.log(`Server is up on port ${port}`);
+
+
+// app.listen(port, () => {
+// 	console.log(`Server is up on port ${port}`);
+// });
+
+app.listen(3000, () => {
+	console.log("server is on port 3000");
 });
